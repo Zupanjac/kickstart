@@ -10,16 +10,11 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
--- Make line numbers default
 vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
 
--- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
--- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
@@ -161,6 +156,8 @@ require('lazy').setup({
       },
     },
   },
+
+  { 'mfussenegger/nvim-jdtls' },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
@@ -588,15 +585,6 @@ require('lazy').setup({
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
-          end,
-          jdtls = function()
-            require('java').setup {
-              -- Your custom jdtls settings goes here
-            }
-
-            require('lspconfig').jdtls.setup {
-              -- Your custom nvim-java configuration goes here
-            }
           end,
         },
       }
