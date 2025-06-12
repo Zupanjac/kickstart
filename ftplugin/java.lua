@@ -1,5 +1,6 @@
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local root_patterns = { 'gradlew', 'build-atlas.xml', '.git', 'setup.py' }
+--- vim.uv.os_setenv('JAVA_HOME', 'C:/Program Files/Eclipse Adoptium/jdk-21.0.5.11-hotspot')
 local root_dir = vim.fs.dirname(vim.fs.find('atlas', { upward = true })[1])
 local config = {
   -- The command that starts the language server
@@ -24,14 +25,14 @@ local config = {
 
     -- 💀
     '-jar',
-    'C:/tools/jdt-language-server-1.42.0/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
+    'C:/tools/jdt-language-server-latest/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
     -- Must point to the                                                     Change this to
     -- eclipse.jdt.ls installation                                           the actual version
 
     -- 💀
     '-configuration',
-    'C:/tools/jdt-language-server-1.42.0/config_win',
+    'C:/tools/jdt-language-server-latest/config_win',
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
     -- Must point to the                      Change to one of `linux`, `win` or `mac`
     -- eclipse.jdt.ls installation            Depending on your system.
@@ -51,10 +52,19 @@ local config = {
   root_dir = vim.fs.root(0, { '.git', 'settings.gradle', 'build.xml', 'gradlew.bat' }),
 
   -- Here you can configure eclipse.jdt.ls specific settings
-  -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+  -- See https://githucom/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
   -- for a list of options
   settings = {
-    java = {},
+    java = {
+      configuration = {
+        runtimes = {
+          {
+            name = 'JavaSE-1.8',
+            path = 'C:/Program Files/BellSoft/LibericaJDK-8-Full/',
+          },
+        },
+      },
+    },
   },
 
   -- Language server `initializationOptions`
