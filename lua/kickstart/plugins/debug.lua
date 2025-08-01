@@ -16,6 +16,7 @@ return {
 
     -- Required dependency for nvim-dap-ui
     'nvim-neotest/nvim-nio',
+    'leoluz/nvim-dap-go',
 
     -- Installs the debug adapters for you
     'williamboman/mason.nvim',
@@ -52,6 +53,7 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    require('dap-go').setup()
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
