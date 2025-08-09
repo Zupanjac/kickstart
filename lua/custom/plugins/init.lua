@@ -3,6 +3,7 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+  'github/copilot.vim',
   'kdheepak/lazygit.nvim',
   cmd = {
     'LazyGit',
