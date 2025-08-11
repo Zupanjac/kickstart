@@ -1,4 +1,7 @@
+vim.keymap.set('i', '<S-Tab>', 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
+
 return {
+
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     dependencies = {
