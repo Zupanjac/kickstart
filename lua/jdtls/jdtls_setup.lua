@@ -8,7 +8,7 @@ local config = {
   cmd = {
 
     -- 💀
-    'C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.5.11-hotspot\\bin\\java', -- or '/path/to/java17_or_newer/bin/java'
+    'C://Program Files//Eclipse Adoptium//jdk-21.0.5.11-hotspot//bin//java',
     -- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -25,14 +25,15 @@ local config = {
 
     -- 💀
     '-jar',
-    'C:/tools/jdt-language-server-latest/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
+
+    'C:\\Users\\ivkic\\AppData\\Local\\nvim-data\\mason\\packages\\jdtls\\plugins\\org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar',
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
     -- Must point to the                                                     Change this to
     -- eclipse.jdt.ls installation                                           the actual version
 
     -- 💀
     '-configuration',
-    'C:/tools/jdt-language-server-latest/config_win',
+    'C:\\Users\\ivkic\\AppData\\Local\\nvim-data\\mason\\packages\\jdtls\\config_win',
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
     -- Must point to the                      Change to one of `linux`, `win` or `mac`
     -- eclipse.jdt.ls installation            Depending on your system.
@@ -97,6 +98,9 @@ local config = {
     bundles = {},
   },
 }
+vim.keymap.set({ 'n', 'v', 'i' }, '<C-x><C-f>', function()
+  require('fzf-lua').complete_path()
+end, { silent = true, desc = 'Fuzzy complete path' })
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
 require('jdtls').start_or_attach(config)
