@@ -1,3 +1,4 @@
+print('Loading jdtls setup...')
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local root_patterns = { 'gradlew', 'build-atlas.xml', '.git', 'setup.py' }
 --- vim.uv.os_setenv('JAVA_HOME', 'C:/Program Files/Eclipse Adoptium/jdk-21.0.5.11-hotspot')
