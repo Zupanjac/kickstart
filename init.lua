@@ -645,5 +645,6 @@ require('lazy').setup({
   },
 })
 
+require('lsp/clangd')
 
-
+vim.lsp.enable('clangd')
